@@ -2,14 +2,17 @@ import { FcGoogle } from "react-icons/fc";
 import useGoogleAuth from "../hooks/useGoogleAuth";
 import useRoute from "../hooks/useRoute";
 import Button from "../components/Button";
+import { useLocation } from "react-router-dom";
 
 export default function LoginPage() {
   const { signInWithGoogle } = useGoogleAuth();
-  const { navigateToHome } = useRoute();
+  const { navigateToPath, navigateToHome } = useRoute();
+  const { state } = useLocation();
+
   const handleClick = () => {
     signInWithGoogle()
-      .then(() => navigateToHome())
-      .catch((error) => alert("에러가 발생했습니다."));
+      .then(() => (state ? navigateToPath(state) : navigateToHome))
+      .catch(() => alert("에러가 발생했습니다."));
   };
   return (
     <section className="flex flex-col gap-10 justify-start pt-20 items-center h-screen">

@@ -1,4 +1,3 @@
-import React from "react";
 import NavBarItem from "./NavBarItem";
 import useRoute from "../hooks/useRoute";
 import useGoogleAuth from "../hooks/useGoogleAuth";

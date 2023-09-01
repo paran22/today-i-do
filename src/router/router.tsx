@@ -5,6 +5,7 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import WriteBoardPage from "../pages/WriteBoardPage";
 import BoardDetailPage from "../pages/BoardDetailPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +23,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/boards/write",
-        element: <WriteBoardPage />,
+        element: (
+          <ProtectedRoute>
+            <WriteBoardPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/boards/:boardId",
