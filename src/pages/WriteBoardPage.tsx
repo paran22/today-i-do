@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import Button from "../components/button";
+import React, { useRef, useState } from "react";
+import Button from "../components/Button";
 import WriteBoardTextArea from "../components/WriteBoardTextArea";
+import ConfirmModal from "../components/ConfirmModal";
 
 interface Board {
   todayDone: string;
@@ -9,19 +10,20 @@ interface Board {
 }
 
 export default function WriteBoardPage() {
+  const [showModal, setShowModal] = useState(false);
   const [board, setBoard] = useState<Board>({
     todayDone: "",
     good: "",
     notGood: "",
   });
+  const { todayDone, good, notGood } = board;
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setBoard((prev) => ({ ...prev, [name]: value }));
   };
   const onButtonClick = () => {
-    console.log(board);
+    if (todayDone === "" || good === "" || notGood === "") setShowModal(true);
   };
-
   return (
     <section className="flex flex-col gap-10 pt-6 items-center">
       <p className="font-bold text-3xl">작성하기</p>
@@ -46,6 +48,13 @@ export default function WriteBoardPage() {
         />
       </form>
       <Button name="저장하기" onClick={onButtonClick} />
+      {showModal && (
+        <ConfirmModal
+          title="내용을 모두 작성해주세요."
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      )}
     </section>
   );
 }
