@@ -1,7 +1,7 @@
 import { FcGoogle } from "react-icons/fc";
 import useGoogleAuth from "../hooks/useGoogleAuth";
 import useRoute from "../hooks/useRoute";
-import Button from "../components/button";
+import Button from "../components/Button";
 
 export default function LoginPage() {
   const { signInWithGoogle } = useGoogleAuth();
