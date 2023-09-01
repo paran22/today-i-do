@@ -5,14 +5,14 @@ interface ModalProps {
   title: string;
   showModal: boolean;
   setShowModal: (show: boolean) => void;
-  onClose: () => void;
+  onConfirmClick?: () => void;
 }
 
 export default function ConfirmModal({
   showModal,
   setShowModal,
   title,
-  onClose,
+  onConfirmClick = () => {},
 }: ModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   console.log(showModal);
@@ -21,12 +21,12 @@ export default function ConfirmModal({
       dialogRef.current?.showModal();
     }
   }, [showModal]);
-  const onConfirmClick = () => {
+  const handleConfirm = () => {
     dialogRef.current?.close();
     setShowModal(false);
-    onClose();
+    onConfirmClick();
   };
-  const onCloseClick = () => {
+  const handleClose = () => {
     dialogRef.current?.close();
     setShowModal(false);
   };
@@ -37,12 +37,12 @@ export default function ConfirmModal({
       ref={dialogRef}
     >
       <div className="w-full flex justify-end text-xl px-4">
-        <AiOutlineCloseCircle className="" onClick={onCloseClick} />
+        <AiOutlineCloseCircle className="" onClick={handleClose} />
       </div>
       <p>{title}</p>
       <button
         className="bg-background text-textColor rounded-lg px-4 py-1 text-sm mt-2"
-        onClick={onConfirmClick}
+        onClick={handleConfirm}
       >
         확인
       </button>
