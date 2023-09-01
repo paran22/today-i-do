@@ -53,6 +53,7 @@ export default function WriteBoardPage() {
           title="내용을 모두 작성해주세요."
           showModal={showModal}
           setShowModal={setShowModal}
+          onClose={() => {}}
         />
       )}
     </section>
