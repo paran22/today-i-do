@@ -7,17 +7,16 @@ import useAuthState from "../hooks/useAuthState";
 import { useMutation } from "@tanstack/react-query";
 import Loading from "../components/Loading";
 import useRoute from "../hooks/useRoute";
-import { Board } from "../model/board";
+import { BoardInput } from "../model/board";
 
 export default function WriteBoardPage() {
   const [showEmptyModal, setShowEmptyModal] = useState(false);
   const { navigateToHome } = useRoute();
 
-  const [board, setBoard] = useState<Board>({
+  const [board, setBoard] = useState<BoardInput>({
     todayDone: "",
     good: "",
     notGood: "",
-    createAt: new Date(),
   });
   const { todayDone, good, notGood } = board;
   const { user } = useAuthState();
@@ -27,12 +26,12 @@ export default function WriteBoardPage() {
   };
   const { mutate: saveBoard, isLoading, isSuccess } = useMutation(createBoard);
   const handleButtonClick = () => {
-    if (!user?.uid) return;
+    if (!user?.uid || !user.displayName) return;
     if (todayDone === "" || good === "" || notGood === "") {
       setShowEmptyModal(true);
       return;
     }
-    saveBoard({ board: board, userId: user.uid });
+    saveBoard({ board: board, userId: user.uid, username: user.displayName });
   };
   return (
     <section className="flex flex-col gap-10 pt-6 items-center">

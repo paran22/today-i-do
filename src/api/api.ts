@@ -2,23 +2,30 @@ import { getDatabase, get, ref, set, remove } from "firebase/database";
 import uuid from "react-uuid";
 import { app } from "../firebase";
 import { toDate } from "../utils/dateUtils";
-import { Board } from "../model/board";
+import { Board, BoardInput } from "../model/board";
 
 const db = getDatabase(app);
 const boardDbKey = "boards";
 
 interface CreateBoardProps {
-  board: Board;
+  board: BoardInput;
   userId: string;
+  username: string;
 }
 
-export async function createBoard({ board, userId }: CreateBoardProps) {
+export async function createBoard({
+  board,
+  userId,
+  username,
+}: CreateBoardProps) {
   const boardId = uuid();
-  const date = toDate(board.createAt);
+  const createAt = new Date();
+  const date = toDate(createAt);
   try {
     set(ref(db, `${boardDbKey}/${date}/${userId}/${boardId}`), {
       ...board,
-      createAt: board.createAt.toDateString(),
+      createAt: createAt.toDateString(),
+      username: username,
     });
   } catch (e) {
     console.error(e);
