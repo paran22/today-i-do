@@ -12,6 +12,7 @@ export interface Board {
   todayDone: string;
   good: string;
   notGood: string;
+  createAt: Date;
 }
 
 export default function WriteBoardPage() {
@@ -22,6 +23,7 @@ export default function WriteBoardPage() {
     todayDone: "",
     good: "",
     notGood: "",
+    createAt: new Date(),
   });
   const { todayDone, good, notGood } = board;
   const { user } = useAuthState();
