@@ -6,16 +6,18 @@ import { Board } from "../pages/WriteBoardPage";
 const db = getDatabase(app);
 const boardDbKey = "boards";
 
-interface SaveBoardProps {
+interface CreateBoardProps {
   board: Board;
   userId: string;
 }
 
-export async function createBoard({ board, userId }: SaveBoardProps) {
+export async function createBoard({ board, userId }: CreateBoardProps) {
   const boardId = uuid();
-  set(ref(db, `${boardDbKey}/${userId}/${boardId}`), {
-    ...board,
-  }).catch(() => {
+  try {
+    set(ref(db, `${boardDbKey}/${userId}/${boardId}`), {
+      ...board,
+    });
+  } catch {
     throw Error();
-  });
+  }
 }
