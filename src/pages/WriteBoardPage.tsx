@@ -7,13 +7,7 @@ import useAuthState from "../hooks/useAuthState";
 import { useMutation } from "@tanstack/react-query";
 import Loading from "../components/Loading";
 import useRoute from "../hooks/useRoute";
-
-export interface Board {
-  todayDone: string;
-  good: string;
-  notGood: string;
-  createAt: Date;
-}
+import { Board } from "../model/board";
 
 export default function WriteBoardPage() {
   const [showEmptyModal, setShowEmptyModal] = useState(false);

@@ -1,8 +1,8 @@
 import { getDatabase, get, ref, set, remove } from "firebase/database";
 import uuid from "react-uuid";
 import { app } from "../firebase";
-import { Board } from "../pages/WriteBoardPage";
 import { toDate } from "../utils/dateUtils";
+import { Board } from "../model/board";
 
 const db = getDatabase(app);
 const boardDbKey = "boards";
