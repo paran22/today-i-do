@@ -5,6 +5,7 @@ import ConfirmModal from "../components/ConfirmModal";
 import { createBoard } from "../api/api";
 import useAuthState from "../hooks/useAuthState";
 import { useMutation } from "@tanstack/react-query";
+import Loading from "../components/Loading";
 
 export interface Board {
   todayDone: string;
@@ -39,9 +40,6 @@ export default function WriteBoardPage() {
     }
     saveBoard({ board: board, userId: user.uid });
   };
-  if (isLoading) return <p>로딩중...</p>;
-  if (isError) return <p>에러??...</p>;
-  if (isSuccess) return <p>성공!...</p>;
   return (
     <section className="flex flex-col gap-10 pt-6 items-center">
       <p className="font-bold text-3xl">작성하기</p>
@@ -73,6 +71,7 @@ export default function WriteBoardPage() {
           setShowModal={setShowModal}
         />
       )}
+      <Loading visible={isLoading} />
     </section>
   );
 }
