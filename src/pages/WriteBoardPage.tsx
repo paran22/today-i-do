@@ -6,6 +6,7 @@ import { createBoard } from "../api/api";
 import useAuthState from "../hooks/useAuthState";
 import { useMutation } from "@tanstack/react-query";
 import Loading from "../components/Loading";
+import useRoute from "../hooks/useRoute";
 
 export interface Board {
   todayDone: string;
@@ -14,7 +15,9 @@ export interface Board {
 }
 
 export default function WriteBoardPage() {
-  const [showModal, setShowModal] = useState(false);
+  const [showEmptyModal, setShowEmptyModal] = useState(false);
+  const { navigateToHome } = useRoute();
+
   const [board, setBoard] = useState<Board>({
     todayDone: "",
     good: "",
@@ -26,16 +29,11 @@ export default function WriteBoardPage() {
     const { name, value } = e.target;
     setBoard((prev) => ({ ...prev, [name]: value }));
   };
-  const {
-    mutate: saveBoard,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useMutation(createBoard);
+  const { mutate: saveBoard, isLoading, isSuccess } = useMutation(createBoard);
   const handleButtonClick = () => {
     if (!user?.uid) return;
     if (todayDone === "" || good === "" || notGood === "") {
-      setShowModal(true);
+      setShowEmptyModal(true);
       return;
     }
     saveBoard({ board: board, userId: user.uid });
@@ -64,13 +62,17 @@ export default function WriteBoardPage() {
         />
       </form>
       <Button name="저장하기" onClick={handleButtonClick} />
-      {showModal && (
-        <ConfirmModal
-          title="내용을 모두 작성해주세요."
-          showModal={showModal}
-          setShowModal={setShowModal}
-        />
-      )}
+      <ConfirmModal
+        title="내용을 모두 작성해주세요."
+        visible={showEmptyModal}
+        setVisible={setShowEmptyModal}
+      />
+      <ConfirmModal
+        title="저장되었습니다!!"
+        visible={isSuccess}
+        setVisible={() => {}}
+        onConfirmClick={navigateToHome}
+      />
       <Loading visible={isLoading} />
     </section>
   );
