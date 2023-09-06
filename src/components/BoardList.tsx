@@ -2,9 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { getBoardsByDate } from "../api/api";
 import BoardItem from "./BoardItem";
 
-export default function BoardList() {
-  const { data: boardResponses } = useQuery(["boards"], () =>
-    getBoardsByDate({ dateTime: new Date() })
+interface BoardListProps {
+  date: Date;
+}
+
+export default function BoardList({ date }: BoardListProps) {
+  const { data: boardResponses } = useQuery(["boards", date], () =>
+    getBoardsByDate({ dateTime: date })
   );
   return (
     <section className="px-4 py-4">
