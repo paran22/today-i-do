@@ -1,24 +1,16 @@
 import { toDate } from "../utils/dateUtils";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
+import useDate from "../hooks/useDate";
 
-interface DateControllerProps {
-  date: Date;
-  onLeftClick: () => void;
-  onRightClick: () => void;
-}
-
-export default function DateController({
-  date,
-  onLeftClick,
-  onRightClick,
-}: DateControllerProps) {
+export default function DateController() {
+  const { date, toOneDayAgo, toOneDayNext } = useDate();
   return (
     <section className="flex w-full justify-center items-center text-2xl gap-4">
-      <button onClick={onLeftClick}>
+      <button onClick={toOneDayAgo}>
         <BiSolidLeftArrow />
       </button>
       {toDate(date)}
-      <button onClick={onRightClick}>
+      <button onClick={toOneDayNext}>
         <BiSolidRightArrow />
       </button>
     </section>
