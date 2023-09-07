@@ -5,11 +5,11 @@ export function toDate(dateTime: Date) {
 }
 
 export function minusOneDate(dateTime: Date) {
-  const date = new Date(dateTime.valueOf());
-  return new Date(date.setDate(date.getDate() - 1));
+  const copyOfDateTime = new Date(dateTime);
+  return new Date(copyOfDateTime.setDate(copyOfDateTime.getDate() - 1));
 }
 
 export function plusOneDate(dateTime: Date) {
-  let date = new Date(dateTime.valueOf());
-  return new Date(date.setDate(date.getDate() + 1));
+  const copyOfDateTime = new Date(dateTime);
+  return new Date(copyOfDateTime.setDate(copyOfDateTime.getDate() + 1));
 }
