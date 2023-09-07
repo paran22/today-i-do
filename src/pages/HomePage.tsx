@@ -1,11 +1,11 @@
 import DateController from "../components/DateController";
-import BoardList from "../components/BoardList";
+import Boards from "../components/Boards";
 
 export default function HomePage() {
   return (
     <>
       <DateController />
-      <BoardList />
+      <Boards />
     </>
   );
 }
