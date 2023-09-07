@@ -4,12 +4,8 @@ import { minusOneDate, plusOneDate } from "../utils/dateUtils";
 
 export default function useDate() {
   const [date, setDate] = useRecoilState(dateState);
-  const toOneDayAgo = () => {
-    setDate((prev) => minusOneDate(prev));
-  };
-  const toOneDayNext = () => {
-    setDate((prev) => plusOneDate(prev));
-  };
-
-  return { date, toOneDayAgo, toOneDayNext };
+  const toOneDayAgo = () => setDate((prev) => minusOneDate(prev));
+  const toOneDayNext = () => setDate((prev) => plusOneDate(prev));
+  const toToday = () => setDate(new Date());
+  return { date, toOneDayAgo, toOneDayNext, toToday };
 }
