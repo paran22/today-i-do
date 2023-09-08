@@ -1,7 +1,5 @@
-export function toDateString(dateTime: Date) {
-  return `${dateTime.getFullYear()}-${
-    dateTime.getMonth() + 1
-  }-${dateTime.getDate()}`;
+export function toDateString(date: Date) {
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 }
 
 export function minusOneDate(date: Date) {

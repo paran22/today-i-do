@@ -33,7 +33,7 @@ export async function createBoard({
   }
 }
 interface GetBoardsByDateProps {
-  dateTime: Date;
+  date: Date;
 }
 
 interface BoardResponse {
@@ -41,10 +41,10 @@ interface BoardResponse {
   board: BoardModel;
 }
 
-export async function getBoardsByDate({ dateTime }: GetBoardsByDateProps) {
-  const date = toDateString(dateTime);
+export async function getBoardsByDate({ date }: GetBoardsByDateProps) {
+  const dateString = toDateString(date);
   try {
-    const data = await get(ref(db, `${boardDbKey}/${date}`));
+    const data = await get(ref(db, `${boardDbKey}/${dateString}`));
     const boards = data.val();
     if (!boards) return [];
     return Object.values(boards)
