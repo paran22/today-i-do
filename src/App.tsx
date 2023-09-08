@@ -30,7 +30,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
-      <section ref={ref} className="pt-12">
+      <section ref={ref} className="pt-12 pb-6">
         <Outlet />
       </section>
       <Footer />
