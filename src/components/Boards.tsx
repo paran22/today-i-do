@@ -1,9 +1,10 @@
 import useBoards from "../hooks/useBoards";
 import Board from "./Board";
 import EmptyBoards from "./EmptyBoards";
+import Loading from "./Loading";
 
 export default function Boards() {
-  const { boards } = useBoards();
+  const { boards, isLoading } = useBoards();
   const isEmptyBoards = boards !== undefined && boards.length === 0;
   if (isEmptyBoards) return <EmptyBoards />;
   return (
@@ -15,6 +16,7 @@ export default function Boards() {
           ))}
         </ul>
       )}
+      <Loading visible={isLoading} />
     </section>
   );
 }
