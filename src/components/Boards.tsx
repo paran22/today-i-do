@@ -1,5 +1,5 @@
-import BoardItem from "./BoardItem";
 import useBoards from "../hooks/useBoards";
+import Board from "./Board";
 import EmptyBoards from "./EmptyBoards";
 
 export default function Boards() {
@@ -11,7 +11,7 @@ export default function Boards() {
       {boards && (
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {boards.map((board) => (
-            <BoardItem key={board.id} board={board.board} />
+            <Board key={board.id} board={board.board} />
           ))}
         </ul>
       )}

@@ -2,7 +2,7 @@ import { getDatabase, get, ref, set, remove } from "firebase/database";
 import uuid from "react-uuid";
 import { app } from "../firebase";
 import { toDate } from "../utils/dateUtils";
-import { Board, BoardInput } from "../model/board";
+import { BoardModel, BoardInput } from "../model/boardModel";
 
 const db = getDatabase(app);
 const boardDbKey = "boards";
@@ -38,7 +38,7 @@ interface GetBoardsByDateProps {
 
 interface BoardResponse {
   id: string;
-  board: Board;
+  board: BoardModel;
 }
 
 export async function getBoardsByDate({ dateTime }: GetBoardsByDateProps) {

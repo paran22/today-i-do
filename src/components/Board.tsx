@@ -1,7 +1,6 @@
-import React from "react";
-import { Board } from "../model/board";
+import { BoardModel } from "../model/boardModel";
 
-export default function BoardItem({ board }: { board: Board }) {
+export default function Board({ board }: { board: BoardModel }) {
   const { todayDone, good, notGood, username } = board;
   return (
     <section className="flex flex-col text-slate-700 bg-secondary rounded-lg py-2 px-2">

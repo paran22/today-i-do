@@ -4,7 +4,7 @@ export interface BoardInput {
   notGood: string;
 }
 
-export interface Board {
+export interface BoardModel {
   todayDone: string;
   good: string;
   notGood: string;
