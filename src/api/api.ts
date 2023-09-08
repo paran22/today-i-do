@@ -1,7 +1,7 @@
 import { getDatabase, get, ref, set, remove } from "firebase/database";
 import uuid from "react-uuid";
 import { app } from "../firebase";
-import { toDate } from "../utils/dateUtils";
+import { toDateString } from "../utils/dateUtils";
 import { BoardModel, BoardInput } from "../model/boardModel";
 
 const db = getDatabase(app);
@@ -20,7 +20,7 @@ export async function createBoard({
 }: CreateBoardProps) {
   const boardId = uuid();
   const createAt = new Date();
-  const date = toDate(createAt);
+  const date = toDateString(createAt);
   try {
     set(ref(db, `${boardDbKey}/${date}/${userId}/${boardId}`), {
       ...board,
@@ -42,7 +42,7 @@ interface BoardResponse {
 }
 
 export async function getBoardsByDate({ dateTime }: GetBoardsByDateProps) {
-  const date = toDate(dateTime);
+  const date = toDateString(dateTime);
   try {
     const data = await get(ref(db, `${boardDbKey}/${date}`));
     const boards = data.val();

@@ -1,4 +1,4 @@
-import { toDate } from "../utils/dateUtils";
+import { toDateString } from "../utils/dateUtils";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import useDate from "../hooks/useDate";
 
@@ -9,7 +9,7 @@ export default function DateController() {
       <button onClick={toOneDayAgo}>
         <BiSolidLeftArrow />
       </button>
-      {toDate(date)}
+      {toDateString(date)}
       <button onClick={toOneDayNext}>
         <BiSolidRightArrow />
       </button>
