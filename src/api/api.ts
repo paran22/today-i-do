@@ -70,7 +70,7 @@ interface DeleteBoardProps {
 
 export async function deleteBoard({ boardId, date, userId }: DeleteBoardProps) {
   try {
-    remove(ref(db, `${boardDbKey}/${date}/${userId}/${boardId}`));
+    remove(ref(db, `${boardDbKey}/${toDateString(date)}/${userId}/${boardId}`));
   } catch (e) {
     console.error(e);
     throw Error();
