@@ -1,10 +1,11 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import useAuthState from "./hooks/useAuthState";
 import useGoogleAuth from "./hooks/useGoogleAuth";
+import useScroll from "./hooks/useScroll";
 
 const queryClient = new QueryClient();
 
@@ -18,10 +19,19 @@ function App() {
       }),
     [onUserStateChange, setAuthUser]
   );
+
+  const ref = useRef<HTMLElement>(null);
+  const { setBodyElement } = useScroll();
+  useEffect(() => {
+    if (ref.current) setBodyElement(ref.current);
+  }, [setBodyElement]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
-      <Outlet />
+      <section ref={ref} className="pt-12">
+        <Outlet />
+      </section>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
