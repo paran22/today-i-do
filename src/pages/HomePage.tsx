@@ -9,6 +9,7 @@ export default function HomePage() {
   const date = location.search.split("date=")[1];
   const { setDate } = useDate();
   useEffect(() => {
+    if (!date) return;
     setDate(new Date(date));
   }, [date, setDate]);
   return (
