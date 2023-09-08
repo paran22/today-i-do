@@ -9,7 +9,7 @@ export default function Logo() {
   return (
     <button
       className={`flex ${textColor} gap-2 text-4xl font-bold items-center`}
-      onClick={navigateToHome}
+      onClick={() => navigateToHome()}
     >
       <PiNotepadDuotone />
       <p className="hidden sm:block">Today-I-Do</p>
