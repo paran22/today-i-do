@@ -11,4 +11,5 @@ export interface BoardModel {
   createAt: Date;
   username: string;
   userId: string;
+  boardId: string;
 }

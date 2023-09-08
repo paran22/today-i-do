@@ -27,6 +27,7 @@ export async function createBoard({
       createAt: createAt.toDateString(),
       username: username,
       userId: userId,
+      boardId: boardId,
     });
   } catch (e) {
     console.error(e);
@@ -55,6 +56,21 @@ export async function getBoardsByDate({ date }: GetBoardsByDateProps) {
         const item: BoardResponse = { id: e[0], board: e[1] };
         return item;
       });
+  } catch (e) {
+    console.error(e);
+    throw Error();
+  }
+}
+
+interface DeleteBoardProps {
+  boardId: string;
+  date: Date;
+  userId: string;
+}
+
+export async function deleteBoard({ boardId, date, userId }: DeleteBoardProps) {
+  try {
+    remove(ref(db, `${boardDbKey}/${date}/${userId}/${boardId}`));
   } catch (e) {
     console.error(e);
     throw Error();
