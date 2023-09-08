@@ -9,7 +9,7 @@ export default function Logo() {
       onClick={navigateToHome}
     >
       <PiNotepadDuotone />
-      <p>Today-I-Do</p>
+      <p className="hidden sm:block">Today-I-Do</p>
     </button>
   );
 }
