@@ -1,9 +1,11 @@
 import BoardItem from "./BoardItem";
 import useBoards from "../hooks/useBoards";
+import EmptyBoards from "./EmptyBoards";
 
 export default function Boards() {
   const { boards } = useBoards();
-
+  const isEmptyBoards = boards !== undefined && boards.length === 0;
+  if (isEmptyBoards) return <EmptyBoards />;
   return (
     <section className="px-4 py-4">
       {boards && (
