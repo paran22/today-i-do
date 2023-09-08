@@ -26,6 +26,7 @@ export async function createBoard({
       ...board,
       createAt: createAt.toDateString(),
       username: username,
+      userId: userId,
     });
   } catch (e) {
     console.error(e);

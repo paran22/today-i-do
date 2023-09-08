@@ -10,4 +10,5 @@ export interface BoardModel {
   notGood: string;
   createAt: Date;
   username: string;
+  userId: string;
 }
