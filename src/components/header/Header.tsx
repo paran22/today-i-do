@@ -1,6 +1,6 @@
-import Logo from "./Logo";
+import Logo from "../Logo";
 import NavBar from "./NavBar";
-import useScroll from "../hooks/useScroll";
+import useScroll from "../../hooks/useScroll";
 
 export default function Header() {
   const { isScroll } = useScroll();

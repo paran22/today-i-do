@@ -1,7 +1,7 @@
-import useBoards from "../hooks/useBoards";
+import useBoards from "../../hooks/useBoards";
 import Board from "./Board";
+import Loading from "../Loading";
 import EmptyBoards from "./EmptyBoards";
-import Loading from "./Loading";
 
 export default function Boards() {
   const { boards, isLoading } = useBoards();

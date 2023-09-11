@@ -1,7 +1,7 @@
-import { BoardModel } from "../model/boardModel";
+import { BoardModel } from "../../model/boardModel";
 import { PiNotepadDuotone } from "react-icons/pi";
-import useDate from "../hooks/useDate";
-import useRoute from "../hooks/useRoute";
+import useDate from "../../hooks/useDate";
+import useRoute from "../../hooks/useRoute";
 
 export default function Board({ board }: { board: BoardModel }) {
   const { todayDone, good, notGood } = board;

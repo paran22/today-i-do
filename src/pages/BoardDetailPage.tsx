@@ -7,9 +7,9 @@ import { deleteBoard } from "../api/api";
 import { toDateString } from "../utils/dateUtils";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Button from "../components/Button";
-import AskModal from "../components/AskModal";
+import AskModal from "../components/modal/AskModal";
 import Loading from "../components/Loading";
-import ConfirmModal from "../components/ConfirmModal";
+import ConfirmModal from "../components/modal/ConfirmModal";
 import useRoute from "../hooks/useRoute";
 
 export default function BoardDetailPage() {

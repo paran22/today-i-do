@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Button from "../components/Button";
-import WriteBoardTextArea from "../components/WriteBoardTextArea";
-import ConfirmModal from "../components/ConfirmModal";
+import ConfirmModal from "../components/modal/ConfirmModal";
 import { createBoard } from "../api/api";
 import useAuthState from "../hooks/useAuthState";
 import { useMutation } from "@tanstack/react-query";
 import Loading from "../components/Loading";
 import useRoute from "../hooks/useRoute";
 import { BoardInput } from "../model/boardModel";
+import WriteBoardTextArea from "../components/board/WriteBoardTextArea";
 
 export default function WriteBoardPage() {
   const [showEmptyModal, setShowEmptyModal] = useState(false);
@@ -24,6 +24,7 @@ export default function WriteBoardPage() {
     const { name, value } = e.target;
     setBoard((prev) => ({ ...prev, [name]: value }));
   };
+
   const { mutate: saveBoard, isLoading, isSuccess } = useMutation(createBoard);
   const handleButtonClick = () => {
     if (!user?.uid || !user.displayName) return;

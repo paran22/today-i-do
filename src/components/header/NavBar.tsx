@@ -1,7 +1,7 @@
+import useRoute from "../../hooks/useRoute";
+import useGoogleAuth from "../../hooks/useGoogleAuth";
+import useAuthState from "../../hooks/useAuthState";
 import NavBarItem from "./NavBarItem";
-import useRoute from "../hooks/useRoute";
-import useGoogleAuth from "../hooks/useGoogleAuth";
-import useAuthState from "../hooks/useAuthState";
 
 export default function NavBar() {
   const { navigateToLogin, navigateToWriteBoard } = useRoute();

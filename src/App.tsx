@@ -3,7 +3,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import useAuthState from "./hooks/useAuthState";
 import useGoogleAuth from "./hooks/useGoogleAuth";
 import useScroll from "./hooks/useScroll";
