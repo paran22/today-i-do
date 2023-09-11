@@ -70,7 +70,7 @@ export default function BoardDetailPage() {
         setVisible={setShowConfirmModal}
         onConfirmClick={navigateToHome}
       />
-      {isLoading && <Loading visible={isLoading} />}
+      <Loading visible={isLoading} />
     </>
   );
 }
