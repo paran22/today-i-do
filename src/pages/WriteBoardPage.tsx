@@ -8,7 +8,6 @@ import { useMutation } from "@tanstack/react-query";
 import Loading from "../components/Loading";
 import useRoute from "../hooks/useRoute";
 import { BoardInput } from "../model/boardModel";
-import { toDateString } from "../utils/dateUtils";
 
 export default function WriteBoardPage() {
   const [showEmptyModal, setShowEmptyModal] = useState(false);
