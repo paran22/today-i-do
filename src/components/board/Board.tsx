@@ -12,13 +12,15 @@ export default function Board({ board }: { board: BoardModel }) {
   return (
     <button onClick={() => navigateToBoardDetail(board, date)}>
       <section className="flex flex-col text-slate-700 bg-secondary rounded-lg py-2 px-2">
-        <div className="px-1 py-1 flex flex-col items-center gap-2">
+        <div className="px-1 py-1 flex flex-col items-center gap-2 h-30">
           <PiNotepadDuotone className="text-4xl" />
-          <p className="text-xl italic">{todayDone}</p>
+          <p className="text-xl italic whitespace-pre-line line-clamp-1">
+            {todayDone}
+          </p>
         </div>
-        <div className="py-1 px-1">
-          <p>👍 {good}</p>
-          <p>😭 {notGood}</p>
+        <div className="py-1 px-3">
+          <p className="line-clamp-1">👍 {good}</p>
+          <p className="line-clamp-1">😭 {notGood}</p>
         </div>
       </section>
     </button>
