@@ -15,9 +15,10 @@ export default function AskModal({
 }: ModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   useEffect(() => {
-    if (visible) {
-      dialogRef.current?.showModal();
-    }
+    const ref = dialogRef.current;
+    if (!ref) return;
+    if (visible) ref.showModal();
+    return () => ref.close();
   }, [visible]);
   const handleCancle = () => {
     setVisible(false);
