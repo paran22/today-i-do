@@ -16,6 +16,5 @@ export default function useDate() {
     setDate(oneDayNext);
     navigateToHome(toDateString(oneDayNext));
   };
-  const toToday = () => setDate(new Date());
-  return { date, setDate, toOneDayAgo, toOneDayNext, toToday };
+  return { date, setDate, toOneDayAgo, toOneDayNext };
 }
