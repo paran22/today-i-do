@@ -7,7 +7,7 @@ interface ModalProps {
   onConfirmClick?: () => void;
 }
 
-export default function ConfirmModal({
+export default function AskModal({
   visible,
   title,
   setVisible,
@@ -19,6 +19,9 @@ export default function ConfirmModal({
       dialogRef.current?.showModal();
     }
   }, [visible]);
+  const handleCancle = () => {
+    setVisible(false);
+  };
   const handleConfirm = () => {
     dialogRef.current?.close();
     setVisible(false);
@@ -32,12 +35,20 @@ export default function ConfirmModal({
           ref={dialogRef}
         >
           <p>{title}</p>
-          <button
-            className="bg-background text-textColor rounded-lg px-4 py-1 text-sm mt-2"
-            onClick={handleConfirm}
-          >
-            확인
-          </button>
+          <div className="flex gap-4">
+            <button
+              className="border-2 border-dotted border-background text-background rounded-lg px-4 py-1 text-sm mt-2"
+              onClick={handleCancle}
+            >
+              취소
+            </button>
+            <button
+              className="bg-background text-textColor rounded-lg px-4 py-1 text-sm mt-2"
+              onClick={handleConfirm}
+            >
+              확인
+            </button>
+          </div>
         </dialog>
       )}
     </>
