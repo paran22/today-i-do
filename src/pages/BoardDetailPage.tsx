@@ -7,9 +7,8 @@ import { deleteBoard } from "../api/api";
 import { toDateString } from "../utils/dateUtils";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Button from "../components/Button";
-import AskModal from "../components/modal/AskModal";
 import Loading from "../components/Loading";
-import ConfirmModal from "../components/modal/ConfirmModal";
+import ConfirmModal from "../components/Modal";
 import useRoute from "../hooks/useRoute";
 
 export default function BoardDetailPage() {
@@ -58,11 +57,12 @@ export default function BoardDetailPage() {
           />
         )}
       </section>
-      <AskModal
+      <ConfirmModal
         title="삭제하시겠습니까?"
         visible={showAskDeleteModal}
         setVisible={setShowAskDeleteModal}
         onConfirmClick={removeBoard}
+        isCancelButton={true}
       />
       <ConfirmModal
         title="삭제되었습니다."

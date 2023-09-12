@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../components/Button";
-import ConfirmModal from "../components/modal/ConfirmModal";
+import ConfirmModal from "../components/Modal";
 import { createBoard } from "../api/api";
 import useAuthState from "../hooks/useAuthState";
 import { useMutation } from "@tanstack/react-query";
@@ -35,29 +35,31 @@ export default function WriteBoardPage() {
     saveBoard({ board: board, userId: user.uid, username: user.displayName });
   };
   return (
-    <section className="flex flex-col gap-10 pt-6 items-center">
-      <p className="font-bold text-3xl">작성하기</p>
-      <form className="flex flex-col gap-2" onSubmit={() => false}>
-        <WriteBoardTextArea
-          name="todayDone"
-          display="오늘 한 일"
-          value={board.todayDone}
-          onChange={onChange}
-        />
-        <WriteBoardTextArea
-          name="good"
-          display="잘한 점"
-          value={board.good}
-          onChange={onChange}
-        />
-        <WriteBoardTextArea
-          name="notGood"
-          display="아쉬운 점"
-          value={board.notGood}
-          onChange={onChange}
-        />
-      </form>
-      <Button name="저장하기" onClick={handleButtonClick} />
+    <>
+      <section className="flex flex-col gap-10 pt-6 items-center">
+        <p className="font-bold text-3xl">작성하기</p>
+        <form className="flex flex-col gap-2" onSubmit={() => false}>
+          <WriteBoardTextArea
+            name="todayDone"
+            display="오늘 한 일"
+            value={board.todayDone}
+            onChange={onChange}
+          />
+          <WriteBoardTextArea
+            name="good"
+            display="잘한 점"
+            value={board.good}
+            onChange={onChange}
+          />
+          <WriteBoardTextArea
+            name="notGood"
+            display="아쉬운 점"
+            value={board.notGood}
+            onChange={onChange}
+          />
+        </form>
+        <Button name="저장하기" onClick={handleButtonClick} />
+      </section>
       <ConfirmModal
         title="내용을 모두 작성해주세요."
         visible={showEmptyModal}
@@ -70,6 +72,6 @@ export default function WriteBoardPage() {
         onConfirmClick={navigateToHome}
       />
       <Loading visible={isLoading} />
-    </section>
+    </>
   );
 }
